@@ -156,7 +156,7 @@ public class MobilTersediaPanel extends javax.swing.JPanel {
         setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel1.setText("Daftar Kendaraan Motor");
+        jLabel1.setText("Daftar Kendaraan Mobil");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;

@@ -8,6 +8,7 @@ import com.example.GlobalContext;
 import com.example.service.VehicleService;
 import com.example.model.Vehicle;
 import com.example.model.VehicleRentalCustomer;
+import com.example.service.VehicleRentalCustomerService;
 import com.example.utils.CustomResult;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -18,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.lang.Integer;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -27,6 +29,7 @@ import java.util.Locale;
 public class SewaKendaraanMobilPanel extends javax.swing.JPanel {
     private HomePelangganFrame homePelangganFrame;
     private final VehicleService vehicleService = new VehicleService();
+    private final VehicleRentalCustomerService vehicleRentalCustomerService = new VehicleRentalCustomerService();
     private int vehicleId;
 
     /**
@@ -156,7 +159,7 @@ public class SewaKendaraanMobilPanel extends javax.swing.JPanel {
         add(brandLabel1, gridBagConstraints);
 
         lamaSewaInput.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lamaSewaInput.setText("0");
+        lamaSewaInput.setText("3");
         lamaSewaInput.setToolTipText("Masukan lama hari sewa kamu");
         lamaSewaInput.setMinimumSize(new java.awt.Dimension(300, 30));
         lamaSewaInput.setPreferredSize(new java.awt.Dimension(300, 30));
@@ -246,6 +249,11 @@ public class SewaKendaraanMobilPanel extends javax.swing.JPanel {
 
             // Format ulang ke format tujuan
 //            String formattedDate = date.format(outputFormatter);
+            List<VehicleRentalCustomer> daftarRental = vehicleRentalCustomerService.getAllRentalWithVehicleDetailsByUserId(userLoginId);
+            if (daftarRental.size() >= 2) {
+                JOptionPane.showMessageDialog(this, "Kamu hanya dapat menyewa 2 kendaraan", "Oops", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             
             VehicleRentalCustomer newVehicleRentalCustomer = new VehicleRentalCustomer();
             newVehicleRentalCustomer.setUserId(userLoginId);
