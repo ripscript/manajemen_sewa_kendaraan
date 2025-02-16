@@ -21,8 +21,8 @@
 ### 1️⃣ Clone Repository
 
 ```sh
- git clone <repository-url>
- cd <nama-direktori-aplikasi>
+ git clone https://github.com/ripscript/manajemen_sewa_kendaraan.git
+ cd <path ke direktori aplikasi>
 ```
 
 ### 2️⃣ Build Aplikasi
